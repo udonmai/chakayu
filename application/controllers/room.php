@@ -10,7 +10,9 @@ class Room extends CI_Controller {
 	 */
 	public function index()
 	{
-		$this->load->view('udonmai wa sugoi~');
+		$data['words'] = ':)';
+		$this->twig->display('room.html', $data);
+		//$this->load->view('udonmai wa sugoi~');
 	}
 
 	public function creat()
