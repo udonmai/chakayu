@@ -4,10 +4,11 @@ class Test extends CI_Controller {
 
 	public function index()
 	{
-		$m = new Member;
-		$m->username = 'udonmai';
-		$m->password = '123456';
-		$m->save();
+		$m = new Entities\Member;
+		$m->setUsername('udonmai2');
+		$m->setPassword('123456');
+		$this->doctrine->em->persist($m);
+		$this->doctrine->em->flush();
 	}
 }
 
