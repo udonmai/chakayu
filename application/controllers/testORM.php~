@@ -1,0 +1,3 @@
+<?php
+     //require_once 'config/doctrine_config.php';
+	Doctrine::createTablesFromArray(array('Member'));
