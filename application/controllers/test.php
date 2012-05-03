@@ -4,11 +4,11 @@ class Test extends CI_Controller {
 
 	public function index()
 	{
-		$m = new Entities\Member;
-		$m->setUsername('udonmai2');
-		$m->setPassword('123456');
-		$this->doctrine->em->persist($m);
-		$this->doctrine->em->flush();
+		$this->load->model('member', 'm');
+		$this->m->register('udonmai2', '123456');
+
+		$data['words'] = ':)';
+		$this->twig->display('room.html', $data);
 	}
 }
 
