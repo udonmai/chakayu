@@ -4,37 +4,48 @@ class Room extends CI_Controller {
 
 	/**
 	 * The room controller which manages the room-relative action.
-	 *
-	 * Maps to the following URL
-	 * 		http://example.com/index.php/welcome
 	 */
+
+	public function __construct() {
+		parent::__construct();
+		$this->load->model('room');
+	}
+
 	public function index()
 	{
 		$data['words'] = ':)';
 		$this->twig->display('room.html', $data);
-		//$this->load->view('udonmai wa sugoi~');
 	}
 
+	/* 创建聊天室 */
 	public function creat()
 	{
 		
 	}
 
+	/* 注销聊天室 */
 	public function destroy()
 	{
 		
 	}
 
+	/* 加入聊天室 */
 	public function join()
 	{
 	
 	}
 
+	/* 离开该聊天室 */
 	public function leave()
 	{
 	
 	}
 
+
+	/* 实时在这里启动，但是URL为 /room/roomid 映射到 /room/chat */
+	public function chat() {
+		
+	}
 }
 
 /* End of file room.php */
