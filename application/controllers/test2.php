@@ -1,6 +1,6 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class Test extends CI_Controller {
+class Test2 extends CI_Controller {
 
 	/**
 	 * The test controller which manages the room-relative action.
@@ -13,6 +13,8 @@ class Test extends CI_Controller {
 
 	public function index()
 	{
+		$data['words'] = $this->testmodel->subscribe();
+		var_dump($data);
 		$this->twig->display('test.html', $data);
 	}
 
@@ -42,13 +44,8 @@ class Test extends CI_Controller {
 
 
 	/* 实时在这里启动，但是URL为 /room/roomid 映射到 /room/chat */
-	public function chat($u , $r , $m) {
-
-		$data['username'] = $u;
-		$data['roomid'] = $r;
-		$data['msg'] = $m;
-		$this->testmodel->sendmsg($data);
-		//echo $datetime;
+	public function chat() {
+		
 	}
 }
 

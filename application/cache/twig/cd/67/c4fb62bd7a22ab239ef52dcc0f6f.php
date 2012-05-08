@@ -30,7 +30,10 @@ class __TwigTemplate_cd67c4fb62bd7a22ab239ef52dcc0f6f extends Twig_Template
 \t<div>";
         // line 12
         if (isset($context["words"])) { $_words_ = $context["words"]; } else { $_words_ = null; }
-        echo twig_escape_filter($this->env, $_words_, "html", null, true);
+        echo twig_escape_filter($this->env, $this->getAttribute($_words_, 0, array(), "array"), "html", null, true);
+        echo " ";
+        if (isset($context["words"])) { $_words_ = $context["words"]; } else { $_words_ = null; }
+        echo twig_escape_filter($this->env, $this->getAttribute($_words_, 1, array(), "array"), "html", null, true);
         echo "</div>
 
 </body>

@@ -35,10 +35,48 @@ class Testmodel extends U_Model {
 
 	public function test() {
 		$redis = new Predis\Client();
-		$redis->set('root', 'udonmai2');
-		$value = $redis->get('root');
+		$callback = $redis->sadd('rootset', array('udonmai7', 'udonmai2', 'udonmai3'));
+		if($callback) {
+			$value = $redis->smembers('rootset');
+			return $value;
+		} 
+		else return '重复了 :(';
+	}
 
-		return $value;
+	public function publish($msg1, $msg2, $msg3) {
+		$redis = new Predis\Client();
+		$redis->publish('room1', $msg1);	
+		$redis->publish('room2', $msg2);	
+		$redis->publish('room3', $msg3);	
+	}
+
+	public function subscribe() {
+		$redis = new Predis\Client();
+		/*
+		$callback = $redis->subscribe(array('room1', 'room2', 'room3'));
+		$value = $callback;
+
+		for ($i = 0; $i <= 9; $i ++) {
+		//if ($callback[0] == 'message') {
+			//return $value;
+			var_dump($value);
+			//} 
+		}
+		 */
+
+		$subscriptions = array('room1', 'room2', 'room3');
+		foreach ($redis->subscribe($subscriptions) as $message) {
+			var_dump($message);
+		}
+	}
+
+	public function sendmsg($data) {
+		$stamp = time();
+		$datetime = date("Y-m-d H:i:s ", $stamp);
+		$msg = $datetime.$data['username'].' : '.$data['msg'];
+
+		$redis = new Predis\Client();
+		$redis->sadd($data['roomid'], $stamp, $msg);
 	}
 
 }
