@@ -81,5 +81,5 @@ class Testmodel extends U_Model {
 
 }
 
-/* End of file Room.php */
-/* Location: ./application/models/Room.php */
+/* End of file testmodel.php */
+/* Location: ./application/models/testmodel.php */

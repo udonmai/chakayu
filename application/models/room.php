@@ -1,5 +1,11 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
+/*
+ * 在mysql存取room的基本信息
+ * 增删人员于redis的特定room的名单
+ * 修改redis中特定room的在线人数
+ */
+
 class Room extends U_Model {
 
 	/* 创建聊天室 */
@@ -35,5 +41,5 @@ class Room extends U_Model {
 
 }
 
-/* End of file Room.php */
-/* Location: ./application/models/Room.php */
+/* End of file room.php */
+/* Location: ./application/models/room.php */
