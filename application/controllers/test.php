@@ -13,7 +13,9 @@ class Test extends CI_Controller {
 
 	public function index()
 	{
-		$this->twig->display('test.html', $data);
+		$data['baseurl'] = base_url();
+		$data['name'] = 'udonmai';
+		$this->twig->display('room.html', $data);
 	}
 
 	/* 创建聊天室 */

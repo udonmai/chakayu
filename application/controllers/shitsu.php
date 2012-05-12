@@ -1,15 +1,16 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class Room extends CI_Controller {
+class Shitsu extends CI_Controller {
 
 	/**
-	 * The room controller which manages the room-relative action.
+	 * The shitsu controller which manages the room-relative action.
 	 */
 
 	public function __construct() {
 		parent::__construct();
 		$this->load->model('room');
 		$this->load->model('chat');
+		$data['baseurl'] = base_url();
 	}
 
 	//进入某聊天室后呈现，'example.com/chat/room',
@@ -19,7 +20,7 @@ class Room extends CI_Controller {
 	public function index()
 	{
 		$data['words'] = ':)';
-		$this->twig->display('room.html', $data);
+		$this->twig->display('shitsu.html', $data);
 	}
 
 	/* 创建聊天室 */
@@ -48,13 +49,16 @@ class Room extends CI_Controller {
 
 
 	//前端Ajax发送新消息给后端
-	public function chat($username, $roomid, $message， $stamp) {
+	public function chat() {
 		
-		$data['username'] = $username;
-		$data['roomid'] = $roomid;
-		$data['msg'] = $message;
-		$data['stamp'] = $stamp;
-		$this->chat->sendmsg($data);
+		$data['username'] = $this->input->post('username');
+		$data['roomid'] = $this->input->post('roomid');
+		$data['msg'] = $this->input->post('message');
+		$data['stamp'] = $this->input->post('stamp');
+		if ($this->chat->storemsg($data))
+			echo json_encode(array('state' => 'success'));
+		else 
+			echo json_encode(array('state' => 'fail'));
 	}
 
 	// 进入room后前段会马上建立一个Ajax长链接，指向该函数，
@@ -69,5 +73,5 @@ class Room extends CI_Controller {
 	}
 }
 
-/* End of file room.php */
-/* Location: ./application/controllers/room.php */
+/* End of file shitsu.php */
+/* Location: ./application/controllers/shitsu.php */

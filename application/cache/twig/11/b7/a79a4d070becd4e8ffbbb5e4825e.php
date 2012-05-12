@@ -1,7 +1,7 @@
 <?php
 
-/* room.html */
-class __TwigTemplate_dd42794e396ba3360b5afb4e794e60c7 extends Twig_Template
+/* shitsu.html */
+class __TwigTemplate_11b7a79a4d070becd4e8ffbbb5e4825e extends Twig_Template
 {
     public function __construct(Twig_Environment $env)
     {
@@ -21,7 +21,7 @@ class __TwigTemplate_dd42794e396ba3360b5afb4e794e60c7 extends Twig_Template
 <head>
 
 \t<meta charset=\"utf-8\">
-\t<title>茶厅 -「茶粥」</title>
+\t<title>茶室 -「茶粥」</title>
 
 \t<link rel=\"stylesheet\" href=\"";
         // line 8
@@ -78,7 +78,7 @@ class __TwigTemplate_dd42794e396ba3360b5afb4e794e60c7 extends Twig_Template
 
     public function getTemplateName()
     {
-        return "room.html";
+        return "shitsu.html";
     }
 
     public function isTraitable()
