@@ -25,10 +25,9 @@ define(function(require, exports, module) {
 		$('#sendbtn').click(function(event) {
 			var msg = $('#msgtext').val();
 			Comet.send(msg);
-			//$('#msgtext').val() = ''; //清空发布框放到ajax的回调里
 			});
 
 		//建立长链接
-		Comet.run();
+		Comet.polling();
 	});	
 });

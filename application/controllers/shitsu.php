@@ -5,6 +5,9 @@ class Shitsu extends CI_Controller {
 	/**
 	 * The shitsu controller which manages the room-relative action.
 	 */
+	
+	private $_sleepTime = 1;
+	private $_tries = 20;
 
 	public function __construct() {
 		parent::__construct();
@@ -64,12 +67,22 @@ class Shitsu extends CI_Controller {
 	// 进入room后前段会马上建立一个Ajax长链接，指向该函数，
 	// 参数是当时的时间戳，一旦返回马上再次建立链接
 	// 该函数将长期*阻塞*
-	public function checkupdate($roomid, $stamp) {
-		$update = $this->chat->getmsg($roomid, $stamp);	
+	public function checkupdate() {
+		$roomid = $this->input->post('roomid');
+		$stamp = $this->input->post('stamp');
 
-		while (!$update) {
-			
+		//var_dump($update);
+		for ($i = 0; $i < $this->_tries; $i++) {
+			$update = $this->chat->getmsg($roomid, $stamp);	
+			if (count($update) > 0) {
+				echo json_encode(array('s' => 'exist', 'm' => $update));
+				flush();
+				return;
+			}
+			sleep($this->_sleepTime);
 		}
+		echo json_encode(array('s' => 'none'));
+		flush();
 	}
 }
 
