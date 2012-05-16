@@ -3,21 +3,32 @@ define(function(require) {
 	var Cookie = require('cookie');
 
 	return {
-		_sleepTime: 1000,
+		_sleepTime: 1200,
 		_timeout: undefined,
 		_baseurl: 'shitsu/',
-		
+	
+		_padleft: function(str) {
+			str = str - 0 + '';
+			if (str.length == 3) 
+				return str; 
+			else if (str.length == 2)
+				return '0' + str;
+			else if (str.length == 1)
+				return '00' + str;
+		},
+
 		_refresh: function() {
 			Comet = this;
 			setTimeout(function() {
-				Comet.polling()
-			}, this.sleepTime);
+				Comet.polling();
+			}, this._sleepTime)
 		},
 	
 		_getCurrentTimestamp: function() {
+			var mseconds = new Date().getMilliseconds();
 			var mtime = {
 				datetime: Math.round(new Date().getTime() / 1000),
-				mseconds: new Date().getMilliseconds()
+				mseconds: this._padleft(mseconds)
 				}
 			return mtime;
 		},
@@ -34,11 +45,13 @@ define(function(require) {
 					var data = JSON.parse(data);
 					if (data['s'] == 'none') {
 						Comet._refresh();
+						return;
 					} 
 					else {
 						//将后端数据render到页面	
 						$('#chatcontent').append(data['m'][0]);
 						Comet._refresh();
+						return;
 					}
 				});
 		},

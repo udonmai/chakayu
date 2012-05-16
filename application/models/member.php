@@ -11,11 +11,18 @@
 class Member extends U_Model {
 
 	/* 增加用户，后期以OAuth或者OpenID登陆 */
-	public function add($username) {
-		$member = R::dispense('member');
-		$member->username = $username;
-		//var_dump($member);
-		R::store($member);
+	public function add($uid, $uname, $tu, $at, $ei, $rt, $now) {
+		$data = array($uid, $uname, $tu, $at, $ei, $rt, $now);
+		//$member = R::load($membertb, $id);
+		
+		//通过userid找到那行，返回的是一个bean	
+		$member = R::findOne('member', 'userid = ?', array($uid));
+		if (!isset($member)) {
+			$member = R::dispense('member');
+			list($member->userid, $member->username, $member->tinyurl, $member->access_token, $member->expires_in, $member->refresh_token, $member->timegettoken) = $data;
+			R::store($member);
+		}
+		else return; 
 	}
 
 	/* 注销用户 */
@@ -33,6 +40,25 @@ class Member extends U_Model {
 		
 	}
 
+	public function updatetoken($uid, $access_info) {
+		$member = R::findOne('member', "userid = ?", array($uid));
+
+		$data['access_token'] = $access_info["access_token"];
+		$data['expires_in'] = $access_info["expires_in"];
+		$data['refresh_token'] = $access_info["refresh_token"];
+
+		if (isset($member)) {
+			list($member->access_token, $member->expires_in, $member->refresh_token) = $data;
+			R::store($member);
+		}
+	}
+
+	public function timegettoken($uid) {
+		$member = R::findOne('member', "userid = ?", array($uid));
+		if (isset($member)) {
+			return $member->timegettoken;
+		}
+	}
 }
 
 /* End of file Member.php */

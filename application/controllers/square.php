@@ -8,13 +8,13 @@ class Square extends CI_Controller {
 
 	public function __construct() {
 		parent::__construct();
-		$this->load->model('square');
+		$this->load->model('room');
 	}
 
 	public function index()
 	{
 		$data['words'] = ':)';
-		$this->twig->display('room.html', $data);
+		$this->twig->display('square.html', $data);
 	}
 }
 

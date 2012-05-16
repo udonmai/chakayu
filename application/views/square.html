@@ -5,9 +5,10 @@
 	<meta charset="utf-8">
 	<title>市集 -「茶粥」</title>
 
-	<link rel="stylesheet" href="<?php echo BASEPATH; ?>/css/reset.css">
-	<link rel="stylesheet" href="<?php echo BASEPATH; ?>/css/square.css">
-	<script src="<?php echo BASEPATH; ?>/js/lib/sea.js" data-main="<?php echo BASEPATH; ?>/js/squareinit"></script>	
+	<link rel="stylesheet" href="{{ baseurl }}static/css/reset.css">
+	<link rel="stylesheet" href="{{ baseurl }}static/css/bootstrap.min.css">
+	<link rel="stylesheet" href="{{ baseurl }}static/css/square.css">
+	<script src="{{ baseurl }}static/js/lib/sea.js" data-main="{{ baseurl }}static/js/squareinit"></script>	
 	
 </head>
 
@@ -15,7 +16,7 @@
 	<div id="wrap">
 	
 		<div id="main">
-			<div id="selfjoin" class="section"></div>
+			<div id="selfjoin" class="section">{{ words }}</div>
 			<div id="selfbuilt" class="section"></div>
 			<div id="anonymous" class="section"></div>
 		</div>

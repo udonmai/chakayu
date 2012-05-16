@@ -6,7 +6,7 @@ class Shitsu extends CI_Controller {
 	 * The shitsu controller which manages the room-relative action.
 	 */
 	
-	private $_sleepTime = 1;
+	private $_sleepTime = 2;
 	private $_tries = 20;
 
 	public function __construct() {
