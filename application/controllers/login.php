@@ -78,7 +78,7 @@ class Login extends CI_Controller {
 
 		//跳转到/square
 		//$this->twig->display('test.html', $sessiondata);
-		redirect('/square');
+		redirect('square');
 	}
 
 	private function _updatetoken($config, $access_info, $userId) {
