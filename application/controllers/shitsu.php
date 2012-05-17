@@ -14,40 +14,77 @@ class Shitsu extends CI_Controller {
 		$this->load->model('room');
 		$this->load->model('chat');
 		$data['baseurl'] = base_url();
+
+		$session = $this->session->all_userdata();
+		if (! $session['userId']) {
+			redirect('login');
+		}
 	}
 
-	//进入某聊天室后呈现，'example.com/chat/room',
 	//参数暂定为POST的roomid
 	//
 	//新加的时候将返回该room中之前10分钟的内容
-	public function index()
-	{
+	public function index() { 
+
 		$data['words'] = ':)';
 		$this->twig->display('shitsu.html', $data);
 	}
 
 	/* 创建聊天室 */
-	public function creat()
-	{
-		
+	public function creat() {
+
+		$userId = $session['userId'];
+		$roomname = $this->input->post('roomname');
+		$this->room->add($userId, $roomname);
 	}
 
-	/* 注销聊天室 */
-	public function destroy()
-	{
-		
+	/* 销毁聊天室 */
+	public function destroy() {
+	
+		$userId = $session['userId'];
+		$roomname = $this->input->post('roomid');
+		if (! $this->room->destroy($userId, $roomid)) {
+			$s = array(
+				'state' => 'fail',
+				'meg' => '不是您的聊天室，抱歉无法销毁'
+			);
+			echo json_encode($s);
+		}
+	}
+
+	/* 修改聊天室信息 */
+	public function modify() {
+		$newroomname = $this->input->post('newroomname');
+		$roomid = $this->input->post('roomid');
+		$userId = $session['userId'];
+		if (! $this->room->modify($newroomname, $roomid, $userId)) {
+			$s = array(
+				'state' => 'fail',
+				'meg' => '不是您的聊天室，抱歉无法修改'
+			);
+			echo json_encode($s);
+		}
 	}
 
 	/* 加入聊天室 */
-	public function join()
-	{
-	
+	public function join() {
+
+		$roomid = $this->input->post('roomid');
+		$userId = $session['userId'];
+		$this->room->jion($roomid, $userId);
+
+		//加入列表后跳转到shitsu
+		redirect('shitsu');
 	}
 
 	/* 离开该聊天室 */
-	public function leave()
-	{
-	
+	public function leave() {
+
+		$roomid = $this->input->post('roomid');
+		$userId = $session['userId'];
+		$this->room->leave($roomid, $userId);
+
+		redirect('square');
 	}
 
 

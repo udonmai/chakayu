@@ -13,12 +13,8 @@ class Chat extends U_Model {
 		parent::__construct();
 	}
 
-	/* 列出聊天室列表 */
 	public function index() {
-		
-		//$member = R::dispense('room');
-		//$member->rname = $roomname;
-		//R::store($room);
+	
 	}
 
 	//在redis中存储某room中新出现的消息及相关信息

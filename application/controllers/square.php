@@ -9,6 +9,10 @@ class Square extends CI_Controller {
 	public function __construct() {
 		parent::__construct();
 		$this->load->model('room');
+		$session = $this->session->all_userdata();
+		if (! $session['userId']) {
+			redirect('login');
+		}	
 	}
 
 	public function index()

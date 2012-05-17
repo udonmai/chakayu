@@ -10,6 +10,11 @@ class Login extends CI_Controller {
 		parent::__construct();
 		$this->load->model('member');
 		$data['baseuel'] = base_url();
+	
+		//$session = $this->session->all_userdata();
+		//if (! $session['userId']) {
+		//	redirect('login');
+		//}
 	}
 
 	public function index() {
@@ -96,7 +101,7 @@ class Login extends CI_Controller {
 		if (($datetime - $tokentime) > $access_info['expires_in']) {
 			$access_info = $oauthApi->rr_post_curl($token_url,$post_params);//使用code换取token
 			//更新数据库
-			$this->member->updatetoken($userId, $access_info);
+			$this->member->updatetoken($userId, $access_info, $datetime);
 			return $access_info;
 		}
 		else return FALSE;

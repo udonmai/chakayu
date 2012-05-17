@@ -40,15 +40,16 @@ class Member extends U_Model {
 		
 	}
 
-	public function updatetoken($uid, $access_info) {
+	public function updatetoken($uid, $access_info, $datetime) {
 		$member = R::findOne('member', "userid = ?", array($uid));
 
 		$data['access_token'] = $access_info["access_token"];
 		$data['expires_in'] = $access_info["expires_in"];
 		$data['refresh_token'] = $access_info["refresh_token"];
+		$data['timegettoken'] =  $datetime;
 
 		if (isset($member)) {
-			list($member->access_token, $member->expires_in, $member->refresh_token) = $data;
+			list($member->access_token, $member->expires_in, $member->refresh_token, $member->timegettoken) = $data;
 			R::store($member);
 		}
 	}
