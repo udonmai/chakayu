@@ -86,9 +86,24 @@ class __TwigTemplate_cfd660aeb0a81259a4bd1ed30e05776a extends Twig_Template
             echo "\t\t\t\t\t<div name=\"";
             if (isset($context["item"])) { $_item_ = $context["item"]; } else { $_item_ = null; }
             echo twig_escape_filter($this->env, $_item_, "html", null, true);
-            echo "\" class=\"ljroomsection\">
+            echo "\" class=\"ljroomsection roomsection\">
 \t\t\t\t\t\t<div class=\"rs-above\">
-\t\t\t\t\t\t
+\t\t\t\t\t\t\t<form name=\"join\" method=\"post\" action=\"";
+            // line 33
+            if (isset($context["baseurl"])) { $_baseurl_ = $context["baseurl"]; } else { $_baseurl_ = null; }
+            echo twig_escape_filter($this->env, $_baseurl_, "html", null, true);
+            echo "shitsu/join\" style=\"display: none;\">
+\t\t\t\t\t\t\t\t<input name=\"roomid\" value=\"";
+            // line 34
+            if (isset($context["item"])) { $_item_ = $context["item"]; } else { $_item_ = null; }
+            echo twig_escape_filter($this->env, $this->getAttribute($_item_, "roomid"), "html", null, true);
+            echo "\">
+\t\t\t\t\t\t\t</form>
+\t\t\t\t\t\t\t<a href=\"javascript:void(0);\" name=\"";
+            // line 36
+            if (isset($context["roomid"])) { $_roomid_ = $context["roomid"]; } else { $_roomid_ = null; }
+            echo twig_escape_filter($this->env, $_roomid_, "html", null, true);
+            echo "\" class=\"blocka\" title=\"加入\">加入</a>\t
 \t\t\t\t\t\t</div>
 \t\t\t\t\t</div>
 \t\t\t\t";
@@ -96,24 +111,39 @@ class __TwigTemplate_cfd660aeb0a81259a4bd1ed30e05776a extends Twig_Template
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['item'], $context['_parent'], $context['loop']);
         $context = array_merge($_parent, array_intersect_key($context, $_parent));
-        // line 37
+        // line 40
         echo "\t\t\t</div>
 
 \t\t\t<div id=\"self-built\" class=\"section\">
 \t\t\t\t<div id=\"self-built-inner\">
 \t\t\t\t";
-        // line 41
+        // line 44
         if (isset($context["selfbuilt"])) { $_selfbuilt_ = $context["selfbuilt"]; } else { $_selfbuilt_ = null; }
         $context['_parent'] = (array) $context;
         $context['_seq'] = twig_ensure_traversable($_selfbuilt_);
         foreach ($context['_seq'] as $context["_key"] => $context["item"]) {
-            // line 42
+            // line 45
             echo "\t\t\t\t\t<div name=\"";
             if (isset($context["item"])) { $_item_ = $context["item"]; } else { $_item_ = null; }
             echo twig_escape_filter($this->env, $this->getAttribute($_item_, "roomname"), "html", null, true);
-            echo "\" class=\"sbroomsection\">
+            echo "\" class=\"sbroomsection roomsection\">
 \t\t\t\t\t\t<div class=\"rs-above\">
-\t\t\t\t\t\t
+\t\t\t\t\t\t\t<form name=\"join\" method=\"post\" action=\"";
+            // line 47
+            if (isset($context["baseurl"])) { $_baseurl_ = $context["baseurl"]; } else { $_baseurl_ = null; }
+            echo twig_escape_filter($this->env, $_baseurl_, "html", null, true);
+            echo "shitsu/join\" style=\"display: none;\">
+\t\t\t\t\t\t\t\t<input name=\"roomid\" value=\"";
+            // line 48
+            if (isset($context["item"])) { $_item_ = $context["item"]; } else { $_item_ = null; }
+            echo twig_escape_filter($this->env, $this->getAttribute($_item_, "roomid"), "html", null, true);
+            echo "\">
+\t\t\t\t\t\t\t</form>
+\t\t\t\t\t\t\t<a href=\"javascript:void(0);\" name=\"";
+            // line 50
+            if (isset($context["roomid"])) { $_roomid_ = $context["roomid"]; } else { $_roomid_ = null; }
+            echo twig_escape_filter($this->env, $_roomid_, "html", null, true);
+            echo "\" class=\"blocka\" title=\"加入\">加入</a>\t
 \t\t\t\t\t\t</div>
 \t\t\t\t\t\t<div class=\"rs-low\">
 \t\t\t\t\t\t\t<div class=\"rsl-l\"></div>
@@ -125,16 +155,16 @@ class __TwigTemplate_cfd660aeb0a81259a4bd1ed30e05776a extends Twig_Template
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['item'], $context['_parent'], $context['loop']);
         $context = array_merge($_parent, array_intersect_key($context, $_parent));
-        // line 52
+        // line 58
         echo "\t\t\t\t</div>
 
-\t\t\t\t<div id=\"create\" class=\"roomsection\">
+\t\t\t\t<div id=\"create\" class=\"msection\">
 \t\t\t\t\t<div class=\"textinput\">
 \t\t\t\t\t\t<input id=\"createroom\" name=\"createroom\" type=\"text\">
 \t\t\t\t\t</div>
 \t\t\t\t\t<a href=\"javascript:void(0);\" class=\"blocka\" title=\"创建\">
 \t\t\t\t\t\t<img src=\"";
-        // line 59
+        // line 65
         if (isset($context["baseurl"])) { $_baseurl_ = $context["baseurl"]; } else { $_baseurl_ = null; }
         echo twig_escape_filter($this->env, $_baseurl_, "html", null, true);
         echo "static/img/tea.png\">
@@ -168,6 +198,6 @@ class __TwigTemplate_cfd660aeb0a81259a4bd1ed30e05776a extends Twig_Template
 
     public function getDebugInfo()
     {
-        return array (  136 => 59,  127 => 52,  109 => 42,  104 => 41,  98 => 37,  84 => 31,  79 => 30,  69 => 24,  64 => 23,  59 => 22,  41 => 11,  36 => 10,  31 => 9,  26 => 8,  17 => 1,);
+        return array (  166 => 65,  157 => 58,  142 => 50,  136 => 48,  131 => 47,  124 => 45,  119 => 44,  113 => 40,  102 => 36,  96 => 34,  91 => 33,  84 => 31,  79 => 30,  69 => 24,  64 => 23,  59 => 22,  41 => 11,  36 => 10,  31 => 9,  26 => 8,  17 => 1,);
     }
 }

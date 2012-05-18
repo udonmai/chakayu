@@ -25,8 +25,18 @@ class Shitsu extends CI_Controller {
 	//
 	//新加的时候将返回该room中之前10分钟的内容
 	public function index() { 
+		if (! $this->ses['joinroom']) {
+			redirect('square');
+		}
+		$this->load->model('member');
+		$userId = $this->ses['userId'];
 
-		$data['words'] = ':)';
+		$user = $this->member->get($userId);
+		$picurl = $user['picurl'];
+
+		$data['username'] = $this->ses['username'];
+		$data['roomid'] = $this->ses['joinroom'];
+		$data['picurl'] = $picurl;
 		$this->twig->display('shitsu.html', $data);
 	}
 
@@ -72,10 +82,12 @@ class Shitsu extends CI_Controller {
 	public function join() {
 
 		$roomid = $this->input->post('roomid');
-		$userId = $this->$ses['userId'];
-		$this->room->jion($roomid, $userId);
+		$userId = $this->ses['userId'];
+		$this->room->join($roomid, $userId);
 
-		//加入列表后跳转到shitsu
+		$sessiondata = array('joinroom' => $roomid);
+		$this->session->set_userdata($sessiondata);
+
 		redirect('shitsu');
 	}
 
@@ -85,6 +97,9 @@ class Shitsu extends CI_Controller {
 		$roomid = $this->input->post('roomid');
 		$userId = $this->$ses['userId'];
 		$this->room->leave($roomid, $userId);
+
+		$sessiondata = array('roomid' => $roomid);
+		$this->session->unset_userdata($sessiondata);
 
 		redirect('square');
 	}

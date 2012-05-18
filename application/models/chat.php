@@ -25,7 +25,7 @@ class Chat extends U_Model {
 		$msg = $datetime.'+'.$data['username'].'+'.$data['msg'];
 
 		$redis = new Predis\Client();
-		$redis->zadd($data['roomid'], $data['stamp']['datetime'].$data['stamp']['mseconds'], $msg);
+		$redis->zadd('room'.$data['roomid'], $data['stamp']['datetime'].$data['stamp']['mseconds'], $msg);
 
 		return TRUE;
 	}
@@ -33,7 +33,7 @@ class Chat extends U_Model {
 	//从redis中获取的参数为一个时间戳，由此返回比该时间戳更新的msg
 	public function getmsg($roomid, $stamp) {
 		$redis = new Predis\Client();
-		return $redis->zrangebyscore($roomid, $stamp['datetime'].$stamp['mseconds'], '+inf');	
+		return $redis->zrangebyscore('room'.$roomid, $stamp['datetime'].$stamp['mseconds'], '+inf');	
 	}
 
 }

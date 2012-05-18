@@ -62,10 +62,10 @@ class Room extends U_Model {
 
 		//聊天室名单
 		$redis = new Predis\Client();
-		$redis->sadd($roomid, $userId);
+		$redis->sadd('room'.$roomid.'mblist', $userId);
 
 		//该聊天室在线人数
-		$redis->incr($roomid.'onlines');
+		$redis->incr('room'.$roomid.'onlines');
 		$redis->incr('globalonlines');
 
 		//最近加入的7个聊天室
@@ -79,9 +79,9 @@ class Room extends U_Model {
 	public function leave($roomid, $userId) {
 
 		$redis = new Predis\Client();
-		$redis->srem($roomid, $userId);
+		$redis->srem('room'.$roomid.'mblist', $userId);
 
-		$redis->incr($roomid.'onlines');
+		$redis->incr('room'.$roomid.'onlines');
 		$redis->incr('globalonlines');
 	}
 

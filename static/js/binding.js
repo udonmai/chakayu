@@ -8,6 +8,7 @@ define(function(require) {
 		bindevent: function() {
 			var baseurl = this._baseurl;
 
+			//创建
 			$('#create a').click({baseurl: baseurl}, function(e) {
 				var userid = $('#userId').text();	
 				var roomname = $('#createroom').val();
@@ -28,6 +29,12 @@ define(function(require) {
 					});
 
 				});
+
+			//加入
+			$('.roomsection a').click({baseurl: baseurl}, function() {
+				$(this).prev('form').submit();
+			});
+
 		}
 
 	};

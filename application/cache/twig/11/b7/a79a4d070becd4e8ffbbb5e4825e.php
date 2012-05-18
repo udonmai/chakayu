@@ -52,6 +52,12 @@ class __TwigTemplate_11b7a79a4d070becd4e8ffbbb5e4825e extends Twig_Template
 <body>
 \t<div id=\"wrap\">
 \t
+\t\t<div id=\"roomid\" style=\"display: none;\">";
+        // line 18
+        if (isset($context["roomid"])) { $_roomid_ = $context["roomid"]; } else { $_roomid_ = null; }
+        echo twig_escape_filter($this->env, $_roomid_, "html", null, true);
+        echo "</div>
+\t\t
 \t\t<div id=\"main\">
 \t\t\t<div id=\"chatcontent\"></div>
 \t\t\t<div id=\"chatform\">
@@ -67,7 +73,13 @@ class __TwigTemplate_11b7a79a4d070becd4e8ffbbb5e4825e extends Twig_Template
 \t
 \t\t<div id=\"sidebar\">
 \t\t\t<div id=\"member\"></div>
-\t\t\t<div id=\"function\"></div>
+\t\t\t<div id=\"function\">
+\t\t\t\t<div id=\"username\">";
+        // line 36
+        if (isset($context["username"])) { $_username_ = $context["username"]; } else { $_username_ = null; }
+        echo twig_escape_filter($this->env, $_username_, "html", null, true);
+        echo "</div>
+\t\t\t</div>
 \t\t</div>
 
 \t</div>
@@ -88,6 +100,6 @@ class __TwigTemplate_11b7a79a4d070becd4e8ffbbb5e4825e extends Twig_Template
 
     public function getDebugInfo()
     {
-        return array (  41 => 11,  36 => 10,  31 => 9,  26 => 8,  17 => 1,);
+        return array (  77 => 36,  55 => 18,  41 => 11,  36 => 10,  31 => 9,  26 => 8,  17 => 1,);
     }
 }

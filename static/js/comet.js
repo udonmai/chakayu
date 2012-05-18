@@ -35,7 +35,7 @@ define(function(require) {
 	
 		polling: function() {
 			var stamp = this._getCurrentTimestamp();
-			var roomid = 'room1';//$('#roomid').text();
+			var roomid = $('#roomid').text();
 			var Comet = this;
 			
 			$.post(this._baseurl + 'checkupdate/', {
@@ -57,8 +57,8 @@ define(function(require) {
 		},
 
 		send: function(msg) {
-			var username = "udonmai";//Cookie.get("username");
-			var roomid = 'room1';//$('#roomid').text();
+			var username = $('#username').text();
+			var roomid = $('#roomid').text();
 			var stamp = this._getCurrentTimestamp();
 	
 			$.post(this._baseurl + 'chat/', {

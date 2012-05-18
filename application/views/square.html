@@ -28,9 +28,12 @@
 		<div id="main">
 			<div id="latest-join" class="section">
 				{% for item in latestjoin %}
-					<div name="{{ item }}" class="ljroomsection">
+					<div name="{{ item }}" class="ljroomsection roomsection">
 						<div class="rs-above">
-						
+							<form name="join" method="post" action="{{ baseurl }}shitsu/join" style="display: none;">
+								<input name="roomid" value="{{ item.roomid }}">
+							</form>
+							<a href="javascript:void(0);" name="{{ roomid }}" class="blocka" title="加入">加入</a>	
 						</div>
 					</div>
 				{% endfor %}
@@ -39,9 +42,12 @@
 			<div id="self-built" class="section">
 				<div id="self-built-inner">
 				{% for item in selfbuilt %}
-					<div name="{{ item.roomname }}" class="sbroomsection">
+					<div name="{{ item.roomname }}" class="sbroomsection roomsection">
 						<div class="rs-above">
-						
+							<form name="join" method="post" action="{{ baseurl }}shitsu/join" style="display: none;">
+								<input name="roomid" value="{{ item.roomid }}">
+							</form>
+							<a href="javascript:void(0);" name="{{ roomid }}" class="blocka" title="加入">加入</a>	
 						</div>
 						<div class="rs-low">
 							<div class="rsl-l"></div>
@@ -51,7 +57,7 @@
 				{% endfor %}
 				</div>
 
-				<div id="create" class="roomsection">
+				<div id="create" class="msection">
 					<div class="textinput">
 						<input id="createroom" name="createroom" type="text">
 					</div>
