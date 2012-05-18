@@ -37,7 +37,14 @@ class Member extends U_Model {
 
 	/* 获得用户信息 */
 	public function get($uid) {
+		$member = R::findOne('member', "userid = ?", array($uid));
+		$data = array(
+			'userId' => $member->userid,
+			'username' => $member->username,
+			'picurl' => $member->tinyurl
+		);
 		
+		return $data;
 	}
 
 	public function updatetoken($uid, $access_info, $datetime) {

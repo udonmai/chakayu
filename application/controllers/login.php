@@ -11,10 +11,10 @@ class Login extends CI_Controller {
 		$this->load->model('member');
 		$data['baseuel'] = base_url();
 	
-		//$session = $this->session->all_userdata();
-		//if (! $session['userId']) {
-		//	redirect('login');
-		//}
+		$this->ses = $this->session->all_userdata();
+		if (isset($this->ses['userId'])) {
+			redirect('square');
+		}
 	}
 
 	public function index() {

@@ -15,8 +15,8 @@ class Shitsu extends CI_Controller {
 		$this->load->model('chat');
 		$data['baseurl'] = base_url();
 
-		$session = $this->session->all_userdata();
-		if (! $session['userId']) {
+		$this->ses = $this->session->all_userdata();
+		if (! $this->ses['userId']) {
 			redirect('login');
 		}
 	}
@@ -31,17 +31,19 @@ class Shitsu extends CI_Controller {
 	}
 
 	/* 创建聊天室 */
-	public function creat() {
+	public function create() {
 
-		$userId = $session['userId'];
+		$userId = $this->input->post('userId');
 		$roomname = $this->input->post('roomname');
-		$this->room->add($userId, $roomname);
+		$roomid = $this->room->add($userId, $roomname);
+		if ($roomid)
+			echo json_encode(array('s' => 'success', 'roomid' => $roomid));
 	}
 
 	/* 销毁聊天室 */
 	public function destroy() {
 	
-		$userId = $session['userId'];
+		$userId = $this->$ses['userId'];
 		$roomname = $this->input->post('roomid');
 		if (! $this->room->destroy($userId, $roomid)) {
 			$s = array(
@@ -56,7 +58,7 @@ class Shitsu extends CI_Controller {
 	public function modify() {
 		$newroomname = $this->input->post('newroomname');
 		$roomid = $this->input->post('roomid');
-		$userId = $session['userId'];
+		$userId = $this->$ses['userId'];
 		if (! $this->room->modify($newroomname, $roomid, $userId)) {
 			$s = array(
 				'state' => 'fail',
@@ -70,7 +72,7 @@ class Shitsu extends CI_Controller {
 	public function join() {
 
 		$roomid = $this->input->post('roomid');
-		$userId = $session['userId'];
+		$userId = $this->$ses['userId'];
 		$this->room->jion($roomid, $userId);
 
 		//加入列表后跳转到shitsu
@@ -81,7 +83,7 @@ class Shitsu extends CI_Controller {
 	public function leave() {
 
 		$roomid = $this->input->post('roomid');
-		$userId = $session['userId'];
+		$userId = $this->$ses['userId'];
 		$this->room->leave($roomid, $userId);
 
 		redirect('square');

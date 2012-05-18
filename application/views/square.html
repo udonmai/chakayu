@@ -14,11 +14,56 @@
 
 <body>
 	<div id="wrap">
-	
+
+		<div id="top">
+			<div id="logo"></div>
+
+			<div id="profile">
+				<div id="userId">{{ user.userId }}</div>
+				{{ user.username }}
+				{{ user.picurl }}
+			</div>
+		</div>
+
 		<div id="main">
-			<div id="selfjoin" class="section">{{ words }}</div>
-			<div id="selfbuilt" class="section"></div>
-			<div id="anonymous" class="section"></div>
+			<div id="latest-join" class="section">
+				{% for item in latestjoin %}
+					<div name="{{ item }}" class="ljroomsection">
+						<div class="rs-above">
+						
+						</div>
+					</div>
+				{% endfor %}
+			</div>
+
+			<div id="self-built" class="section">
+				<div id="self-built-inner">
+				{% for item in selfbuilt %}
+					<div name="{{ item.roomname }}" class="sbroomsection">
+						<div class="rs-above">
+						
+						</div>
+						<div class="rs-low">
+							<div class="rsl-l"></div>
+							<div class="rsl-r"></div>
+						</div>
+					</div>
+				{% endfor %}
+				</div>
+
+				<div id="create" class="roomsection">
+					<div class="textinput">
+						<input id="createroom" name="createroom" type="text">
+					</div>
+					<a href="javascript:void(0);" class="blocka" title="创建">
+						<img src="{{ baseurl }}static/img/tea.png">
+					</a>
+				</div>
+			</div>
+
+			<div id="anonymous" class="section">
+			
+			</div>
 		</div>
 
 		<div id="foot">

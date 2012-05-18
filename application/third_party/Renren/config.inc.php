@@ -20,7 +20,9 @@
 	$config->APIVersion = '1.0';	//当前API的版本号，不需要修改
 	$config->decodeFormat = 'json';	//默认的返回格式，根据实际情况修改，支持：json,xml
 
-	$config->redirecturi = 'http://210.30.107.84/php/chakayu/login/accesstoken';//你的获取code的回调地址，也是accesstoken的回调地址
+	$baseurl = base_url();
+	$config->redirecturi = $baseurl.'login/accesstoken';//你的获取code的回调地址，也是accesstoken的回调地址
+	//$config->redirecturi = 'http://localhost/php/chakayu/login/accesstoken';//你的获取code的回调地址，也是accesstoken的回调地址
 	$config->scope = 'publish_feed,photo_upload';
 
 ?>

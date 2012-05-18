@@ -11,7 +11,7 @@ seajs.config({
 		this.JSON ? '' : 'json'
 	],
 	debug: true,
-	base: 'http://210.30.107.84/php/chakayu/static/js/lib/',
+	base: '/static/js/lib/',
 	charset: 'utf-8'
 });
 

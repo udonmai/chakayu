@@ -18,6 +18,8 @@ class Room extends U_Model {
 
 		$redis = new Predis\Client();
 		$redis->sadd($userId.'created', $roomid);
+
+		return $roomid;
 	}
 	
 	/* 删除聊天室 */
@@ -44,10 +46,10 @@ class Room extends U_Model {
 	}
 
 	/* 获取聊天室信息 */
-	public function get($rid) {
-		$room = R::findOne('room', 'roomid = ?', array($roomid));
+	public function get($roomid) {
+		$room = R::findOne('room', 'id = ?', array($roomid));
 		$data = array(
-			'roomid' => $room->roomid,
+			'roomid' => $room->id,
 			'roomname' => $room->roomname,
 			'creater' => $room->creater
 		);	
@@ -79,8 +81,8 @@ class Room extends U_Model {
 		$redis = new Predis\Client();
 		$redis->srem($roomid, $userId);
 
-		$redis->decr($roomid.'onlines');
-		$redis->decr('globalonlines')
+		$redis->incr($roomid.'onlines');
+		$redis->incr('globalonlines');
 	}
 
 }
