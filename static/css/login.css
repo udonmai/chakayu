@@ -1,0 +1,55 @@
+#wrap {
+	padding: 80px 0;
+}
+
+#content {
+	height: 620px;
+	min-width: 920px;
+}
+
+#login {
+	height: 300px;
+	min-width: 920px
+}
+
+#info {
+	height: 300px;
+	min-width: 920px;
+}
+
+.lgsection {
+	width: 305px;
+	height: 300px;
+	float: left;
+	text-align: center;
+}
+
+#tea {
+	background: url(../img/logo5.png) no-repeat center center;
+}
+
+#patternl {
+	background: url(../img/pattern1.png) no-repeat 70% center;
+}
+
+#patternr {
+	background: url(../img/pattern12.png) no-repeat 30% center;
+}
+
+#chakayu {
+	width:350px;
+	padding:50px 0 0 130px;
+	float:left;
+}
+
+#action {
+	width:350px;
+	padding:135px 0 0 50px;
+	float:left;
+	background: url(../img/pattern3.png) no-repeat 44% 80%; 
+}
+
+#in {
+	font-size:16px;
+	padding-left:100px;
+}

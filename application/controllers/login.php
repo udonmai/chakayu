@@ -66,7 +66,7 @@ class Login extends CI_Controller {
 		$tinyurl = $res[0]['tinyurl'];
 
 		//updatetoken
-		$ut = $this->_updatetoken($config, $access_info, $userId);
+		$ut = $this->_updatetoken($config, $oauthApi, $access_info, $userId);
 
 		//注册
 		$datetime = date("Y-m-d H:i:s", time());
@@ -86,7 +86,7 @@ class Login extends CI_Controller {
 		redirect('square');
 	}
 
-	private function _updatetoken($config, $access_info, $userId) {
+	private function _updatetoken($config, $oauthApi, $access_info, $userId) {
 		
 		$post_params = array(
 			'client_id' => $config->APIKey,

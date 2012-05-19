@@ -25,7 +25,7 @@ class Room extends U_Model {
 	/* 删除聊天室 */
 	public function destroy($userId, $roomid) {
 
-		$room = R::findOne('room', 'roomid = ?', array($roomid));
+		$room = R::findOne('room', 'id = ?', array($roomid));
 		if ($userId != $room->creater) {
 			return FALSE;
 		}
@@ -33,21 +33,26 @@ class Room extends U_Model {
 
 		$redis = new Predis\Client();
 		$redis->srem($userId.'created', $roomid);
+
+		return TRUE;
 	}
 
 	/* 更新聊天室信息 */
 	public function modify($newroomname, $roomid, $userId) {
-		$room = R::findOne('room', 'roomid = ?', array($roomid));
+		$room = R::findOne('room', 'id = ?', array($roomid));
 		if ($userId != $room->creater) {
 			return FALSE;
 		}
 		$room->roomname = $newroomname;
 		R::store($room);
+
+		return TRUE;
 	}
 
 	/* 获取聊天室信息 */
 	public function get($roomid) {
 		$room = R::findOne('room', 'id = ?', array($roomid));
+		if (! $room) return FALSE;
 		$data = array(
 			'roomid' => $room->id,
 			'roomname' => $room->roomname,

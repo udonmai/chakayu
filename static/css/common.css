@@ -1,0 +1,23 @@
+#wrap {
+	height: 100%;
+	background: url(../img/tc_bak.jpg);
+	font-family: 'Helvetica Neue', 'Hiragino Sans GB', Helvetica, Arial, Sans-serif;
+	padding-bottom: 100px;
+}
+
+#content {
+	width: 920px;
+	background: #FAFAF9;
+	margin: 0 auto;
+	border-radius: 4px;
+	box-shadow: rgba(0,0,0,0.35) 0px 0px 4px 0px;
+	padding: 50px 10px 40px 10px;
+}
+
+.slip {
+	height: 2px;
+	width: 600px;
+	margin: 10px auto;
+	box-shadow: rgba(0,0,0,0.35) 0px 0px 4px 0px;
+}
+

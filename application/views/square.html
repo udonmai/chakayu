@@ -7,6 +7,7 @@
 
 	<link rel="stylesheet" href="{{ baseurl }}static/css/reset.css">
 	<link rel="stylesheet" href="{{ baseurl }}static/css/bootstrap.min.css">
+	<link rel="stylesheet" href="{{ baseurl }}static/css/common.css">
 	<link rel="stylesheet" href="{{ baseurl }}static/css/square.css">
 	<script src="{{ baseurl }}static/js/lib/sea.js" data-main="{{ baseurl }}static/js/squareinit"></script>	
 	
@@ -16,59 +17,111 @@
 	<div id="wrap">
 
 		<div id="top">
-			<div id="logo"></div>
+			<div id="logo">
+				<h1>茶粥</h1>
+			</div>
 
 			<div id="profile">
-				<div id="userId">{{ user.userId }}</div>
-				{{ user.username }}
-				{{ user.picurl }}
+				<div id="userId" style="display: none;">{{ user.userId }}</div>
+				<div id="pic"><img src="{{ user.picurl }}"></div>
+				<div id="username">
+					<a href="">离席</a>
+					<p>欢迎，{{ user.username }}</p>
+				</div>
 			</div>
 		</div>
 
-		<div id="main">
+		<div id="content">
+			<div id="square">
+				<h2><img src="{{ baseurl }}static/img/pattern4.png">市集</h2>
+			</div>
+				
+			<div class="lslip"></div>
+
 			<div id="latest-join" class="section">
 				{% for item in latestjoin %}
+				<a href="javascript:void(0);" name="{{ roomid }}" class="blocka" title="加入">
 					<div name="{{ item }}" class="ljroomsection roomsection">
 						<div class="rs-above">
 							<form name="join" method="post" action="{{ baseurl }}shitsu/join" style="display: none;">
 								<input name="roomid" value="{{ item.roomid }}">
 							</form>
-							<a href="javascript:void(0);" name="{{ roomid }}" class="blocka" title="加入">加入</a>	
+
+							<div class="info">
+								{{ item.roomname }}
+							</div>
 						</div>
 					</div>
+				</a>
 				{% endfor %}
+				
+				<div class="title">
+					<h3>最近进入过的茶室</h3>
+				</div>
 			</div>
+
+			<div class="slip"></div>
 
 			<div id="self-built" class="section">
 				<div id="self-built-inner">
 				{% for item in selfbuilt %}
-					<div name="{{ item.roomname }}" class="sbroomsection roomsection">
-						<div class="rs-above">
-							<form name="join" method="post" action="{{ baseurl }}shitsu/join" style="display: none;">
-								<input name="roomid" value="{{ item.roomid }}">
-							</form>
-							<a href="javascript:void(0);" name="{{ roomid }}" class="blocka" title="加入">加入</a>	
+				<div id="room{{ item.roomid }}" class="relative">
+					<a href="javascript:void(0);" name="{{ roomid }}" class="blocka" title="加入">
+						<div name="{{ item.roomname }}" class="sbroomsection roomsection">
+							<div class="rs-above">
+								<form name="join" method="post" action="{{ baseurl }}shitsu/join" style="display: none;">
+									<input name="roomid" value="{{ item.roomid }}">
+								</form>	
+									
+								<div class="info">
+									{{ item.roomname }}
+								</div>
+	
+							</div>
 						</div>
-						<div class="rs-low">
-							<div class="rsl-l"></div>
-							<div class="rsl-r"></div>
-						</div>
+					</a>
+								
+					<div class="rs-low" style="display: none;">
+						<div class="rsl-l"><p>修改</p><p class="rid" style="display: none;">{{ item.roomid }}</p></div>
+						<div class="rsl-r"><p>注销</p><p class="rid" style="display: none;">{{ item.roomid }}</p></div>
 					</div>
+
+				</div>
 				{% endfor %}
 				</div>
 
-				<div id="create" class="msection">
-					<div class="textinput">
-						<input id="createroom" name="createroom" type="text">
-					</div>
-					<a href="javascript:void(0);" class="blocka" title="创建">
-						<img src="{{ baseurl }}static/img/tea.png">
-					</a>
+				<div class="title">
+					<h3>自己创建的茶室</h3>
 				</div>
+
+				<a href="javascript:void(0);" id="msectionbtn" class="blocka" title="创建">
+					<div id="create" class="msection">
+						<p>+</p>
+					</div>
+				</a>
+				<div class="textinput createinput" style="display: none;">
+					<h3>  创建茶室<span>取消</span></h3><br><br>
+					<input id="createroom" name="createroom" type="text">
+					<input id="createbtn" class="btn" value="创建">
+				</div>
+				<div class="textinput modifyinput" style="display: none;">
+					<h3>  修改茶室<span>取消</span></h3><br><br>
+					<input id="modifyroom" name="modifyroom" type="text">
+					<input id="modifybtn" class="btn" value="修改">
+					<p style="display: none;"></p>
+				</div>
+				<div class="textinput destroyinput" style="display: none;">
+					<h3>  注销茶室<span>取消</span></h3><br><br>
+					<input id="destroybtn" class="btn" value="注销">
+					<p style="display: none;"></p>
+				</div>
+				
 			</div>
 
+			<div class="slip"></div>
+
 			<div id="anonymous" class="section">
-			
+
 			</div>
 		</div>
 

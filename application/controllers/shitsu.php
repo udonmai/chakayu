@@ -53,29 +53,31 @@ class Shitsu extends CI_Controller {
 	/* 销毁聊天室 */
 	public function destroy() {
 	
-		$userId = $this->$ses['userId'];
-		$roomname = $this->input->post('roomid');
+		$userId = $this->input->post('userId');
+		$roomid = $this->input->post('roomid');
 		if (! $this->room->destroy($userId, $roomid)) {
 			$s = array(
 				'state' => 'fail',
-				'meg' => '不是您的聊天室，抱歉无法销毁'
+				'msg' => '不是您的聊天室，抱歉无法销毁'
 			);
 			echo json_encode($s);
 		}
+		else echo json_encode(array('state' => 'success'));
 	}
 
 	/* 修改聊天室信息 */
 	public function modify() {
 		$newroomname = $this->input->post('newroomname');
 		$roomid = $this->input->post('roomid');
-		$userId = $this->$ses['userId'];
+		$userId = $this->input->post('userId');
 		if (! $this->room->modify($newroomname, $roomid, $userId)) {
 			$s = array(
 				'state' => 'fail',
-				'meg' => '不是您的聊天室，抱歉无法修改'
+				'msg' => '不是您的聊天室，抱歉无法修改'
 			);
 			echo json_encode($s);
 		}
+		else echo json_encode(array('state' => 'success'));
 	}
 
 	/* 加入聊天室 */
