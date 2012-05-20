@@ -77,7 +77,7 @@ class Room extends U_Model {
 		$redis->lpush($userId.'latestjoin', $roomid);
 		$len = $redis->llen($userId.'latestjoin');
 		if ($len > 7) 
-			$redis->rpop();
+			$redis->rpop($userId.'latestjoin');
 	}
 
 	/* 离开聊天室名单 */

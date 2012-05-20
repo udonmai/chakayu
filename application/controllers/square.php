@@ -35,10 +35,12 @@ class Square extends CI_Controller {
 
 		foreach ($selfbuilts as $selfbuilt) {
 			$room = $this->room->get($selfbuilt);
+			if (! $room) continue;
 			$data['selfbuilt'][$room['roomid']] = $room;
 		}
 		foreach ($latestjoins as $latestjoin) {
 			$room = $this->room->get($latestjoin);
+			if (! $room) continue;
 			$data['latestjoin'][$room['roomid']] = $room;
 		}
 		$data['user'] = $this->member->get($userId);

@@ -104,13 +104,13 @@ class __TwigTemplate_cfd660aeb0a81259a4bd1ed30e05776a extends Twig_Template
         foreach ($context['_seq'] as $context["_key"] => $context["item"]) {
             // line 43
             echo "\t\t\t\t<a href=\"javascript:void(0);\" name=\"";
-            if (isset($context["roomid"])) { $_roomid_ = $context["roomid"]; } else { $_roomid_ = null; }
-            echo twig_escape_filter($this->env, $_roomid_, "html", null, true);
+            if (isset($context["item"])) { $_item_ = $context["item"]; } else { $_item_ = null; }
+            echo twig_escape_filter($this->env, $this->getAttribute($_item_, "roomid"), "html", null, true);
             echo "\" class=\"blocka\" title=\"加入\">
 \t\t\t\t\t<div name=\"";
             // line 44
             if (isset($context["item"])) { $_item_ = $context["item"]; } else { $_item_ = null; }
-            echo twig_escape_filter($this->env, $_item_, "html", null, true);
+            echo twig_escape_filter($this->env, $this->getAttribute($_item_, "roomname"), "html", null, true);
             echo "\" class=\"ljroomsection roomsection\">
 \t\t\t\t\t\t<div class=\"rs-above\">
 \t\t\t\t\t\t\t<form name=\"join\" method=\"post\" action=\"";
@@ -178,7 +178,7 @@ class __TwigTemplate_cfd660aeb0a81259a4bd1ed30e05776a extends Twig_Template
             if (isset($context["baseurl"])) { $_baseurl_ = $context["baseurl"]; } else { $_baseurl_ = null; }
             echo twig_escape_filter($this->env, $_baseurl_, "html", null, true);
             echo "shitsu/join\" style=\"display: none;\">
-\t\t\t\t\t\t\t\t\t<input name=\"roomid\" value=\"";
+\t\t\t\t\t\t\t\t\t<input class=\"forminput\" name=\"roomid\" value=\"";
             // line 73
             if (isset($context["item"])) { $_item_ = $context["item"]; } else { $_item_ = null; }
             echo twig_escape_filter($this->env, $this->getAttribute($_item_, "roomid"), "html", null, true);

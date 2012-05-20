@@ -40,8 +40,8 @@
 
 			<div id="latest-join" class="section">
 				{% for item in latestjoin %}
-				<a href="javascript:void(0);" name="{{ roomid }}" class="blocka" title="加入">
-					<div name="{{ item }}" class="ljroomsection roomsection">
+				<a href="javascript:void(0);" name="{{ item.roomid }}" class="blocka" title="加入">
+					<div name="{{ item.roomname }}" class="ljroomsection roomsection">
 						<div class="rs-above">
 							<form name="join" method="post" action="{{ baseurl }}shitsu/join" style="display: none;">
 								<input name="roomid" value="{{ item.roomid }}">
@@ -70,7 +70,7 @@
 						<div name="{{ item.roomname }}" class="sbroomsection roomsection">
 							<div class="rs-above">
 								<form name="join" method="post" action="{{ baseurl }}shitsu/join" style="display: none;">
-									<input name="roomid" value="{{ item.roomid }}">
+									<input class="forminput" name="roomid" value="{{ item.roomid }}">
 								</form>	
 									
 								<div class="info">

@@ -106,6 +106,15 @@ class Shitsu extends CI_Controller {
 		redirect('square');
 	}
 
+	public function exist() {
+		
+		$roomid = $this->input->post('roomid');
+		if (! $this->room->get($roomid))
+			echo json_encode(array('state' => 'fail'));
+		else
+			echo json_encode(array('state' => 'success'));
+	}
+
 
 	//前端Ajax发送新消息给后端
 	public function chat() {

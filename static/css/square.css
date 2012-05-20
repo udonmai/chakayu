@@ -141,6 +141,11 @@
 	cursor: pointer;
 }
 
+.rs-low p:hover {
+	color: white;
+	background-color: #E5D7A3;
+}
+
 .relative {
 	height: 150px;
 	width: 150px;

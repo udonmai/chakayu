@@ -26,10 +26,18 @@ define(function(require) {
 					}, function(data) {
 						var data = JSON.parse(data);
 						if (data['s'] == 'success') {
+							//第一次创建则刷新
+							if ($('.relative').length == 0)
+								window.location.reload();
+
 							var roomid = data['roomid'];
 							$('.relative:last').clone(true).appendTo('#self-built-inner');
-							$('.relative:last input').val(roomid);
-							$('.relative:last .info').text(roomname);
+							var that = $('.relative:last');
+							that.attr('id', 'room' + roomid);
+							that.find('.roomsection').attr('name', roomname);
+							that.find('.rs-above input').attr('value', roomid); //不知道为什么用val()不行...
+							that.find('.rs-low .rid').text(roomid);
+							that.find('.info').text(roomname);
 							$('.textinput').hide();
 
 						} 
@@ -88,11 +96,31 @@ define(function(require) {
 
 				});
 
-			//加入
-			$('.section a').click({baseurl: baseurl}, function() {
+			//最近进入过的茶室的加入，需要判断是否存在
+			$('#latest-join a').click({baseurl: baseurl}, function() {
+				//先检测是否存在，不在则清除
+				var roomid = $(this).find('input').val();
+				var that = $(this);
+
+				$.post(baseurl + 'exist', {
+					roomid: roomid
+					}, function(data) {
+						var data = JSON.parse(data);
+						if (data['state'] == 'fail') {
+							alert('很抱歉它已经被销毁了 :(');
+							that.remove();
+						}
+						else that.find('form').submit();
+					});
+	
+			});
+		
+			//自建的茶室的加入
+			$('#self-built a').click({baseurl: baseurl}, function() {
 				$(this).find('form').submit();
 			});
-			
+		
+
 			$('#msectionbtn').click(function() {
 				$('.createinput').fadeIn();
 			});
