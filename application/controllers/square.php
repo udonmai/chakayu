@@ -17,11 +17,20 @@ class Square extends CI_Controller {
 		}	
 	}
 
+	private function _getglobalbuilt($userId) {
+
+		//返回全局创建中不是自己创建的8个以内的元素
+		$data = $this->redis->sdiff('globalbuilt', $userId.'created');
+		$num = count($data);
+		if ($num > 8) 
+			return array_rand($data, 8);
+		else 
+			return $data;
+	}
+
 	private function _getlatestjion($userId) {
 
-		$key = $userId.'latestjoin';
-		$len = $this->redis->llen($key);
-		return $this->redis->lrange($key, 0, --$len);
+		return $this->redis->zrevrange($userId.'latestjoin', 0, -1);
 	}
 
 	private function _getselfbuilt($userId) {
@@ -32,6 +41,7 @@ class Square extends CI_Controller {
 		$userId = $this->ses['userId'];
 		$selfbuilts = $this->_getselfbuilt($userId);
 		$latestjoins = $this->_getlatestjion($userId);
+		$globalbuilts = $this->_getglobalbuilt($userId);
 
 		foreach ($selfbuilts as $selfbuilt) {
 			$room = $this->room->get($selfbuilt);
@@ -43,11 +53,24 @@ class Square extends CI_Controller {
 			if (! $room) continue;
 			$data['latestjoin'][$room['roomid']] = $room;
 		}
+		foreach ($globalbuilts as $globalbuilt) {
+			$room = $this->room->get($globalbuilt);
+			if (! $room) continue;
+			$data['globalbuilt'][$room['roomid']] = $room;
+		}
+
 		$data['user'] = $this->member->get($userId);
 
 		$this->twig->display('square.html', $data);
 	}
 
+	public function logout() {
+
+		$sessiondata = array('userId' => '');
+		$this->session->unset_userdata($sessiondata);
+
+		redirect('');
+	}
 }
 
 /* End of file square.php */

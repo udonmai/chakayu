@@ -115,6 +115,24 @@ define(function(require) {
 	
 			});
 		
+			$('#global-create a').click({baseurl: baseurl}, function() {
+				//先检测是否存在，不在则清除
+				var roomid = $(this).find('input').val();
+				var that = $(this);
+
+				$.post(baseurl + 'exist', {
+					roomid: roomid
+					}, function(data) {
+						var data = JSON.parse(data);
+						if (data['state'] == 'fail') {
+							alert('很抱歉它已经被销毁了 :(');
+							that.remove();
+						}
+						else that.find('form').submit();
+					});
+	
+			});
+		
 			//自建的茶室的加入
 			$('#self-built a').click({baseurl: baseurl}, function() {
 				$(this).find('form').submit();

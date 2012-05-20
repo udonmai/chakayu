@@ -67,6 +67,10 @@
 	border-radius: 4px;
 }
 
+.msection:hover {
+	border: 3px solid #005580;
+}
+
 .roomsection {
 	height: 150px;
 	width: 150px;
@@ -164,12 +168,12 @@
 }
 
 .textinput {
-	height: 150px;
+	height: 130px;
 	width: 240px;
 	padding: 30px 20px 30px 20px;
 	background-color: white;
 	border-radius: 4px;
-	box-shadow: rgba(0,0,0,0.80) 0px 0px 1px 0px;
+	box-shadow: rgba(0,0,0,0.80) 0px 0px 3px 0px;
 	text-align: center;
 	position: fixed;
 	z-index: 100;
@@ -178,6 +182,7 @@
 }
 
 .textinput span {
+	margin-left: -24px;
 	font-weight: normal;
 	font-size: 10px;
 	float: right;

@@ -18,6 +18,7 @@ class Room extends U_Model {
 
 		$redis = new Predis\Client();
 		$redis->sadd($userId.'created', $roomid);
+		$redis->sadd('globalbuilt', $roomid);
 
 		return $roomid;
 	}
@@ -73,11 +74,12 @@ class Room extends U_Model {
 		$redis->incr('room'.$roomid.'onlines');
 		$redis->incr('globalonlines');
 
+
 		//最近加入的7个聊天室
-		$redis->lpush($userId.'latestjoin', $roomid);
-		$len = $redis->llen($userId.'latestjoin');
+		$redis->zadd($userId.'latestjoin', time(), $roomid);
+		$len = $redis->zcard($userId.'latestjoin');
 		if ($len > 7) 
-			$redis->rpop($userId.'latestjoin');
+			$redis->zremrangebyrank($userId.'latestjoin', -1, -1);
 	}
 
 	/* 离开聊天室名单 */

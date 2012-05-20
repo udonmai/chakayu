@@ -100,7 +100,7 @@ class Shitsu extends CI_Controller {
 		$userId = $this->$ses['userId'];
 		$this->room->leave($roomid, $userId);
 
-		$sessiondata = array('roomid' => $roomid);
+		$sessiondata = array('roomid' => '');
 		$this->session->unset_userdata($sessiondata);
 
 		redirect('square');
