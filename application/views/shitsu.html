@@ -17,28 +17,48 @@
 <body>
 	<div id="wrap">
 	
-		<div id="roomid" style="display: none;">{{ roomid }}</div>
+		<div id="roomid" style="display: none;">{{ room.roomid }}</div>
 		
 		<div id="content">
-			<div id="chatcontent"></div>
-			<div id="chatform">
-				<form id="sendform">
-					<textarea id="msgtext" name="msgtext"></textarea>
-					<div id="btnarea">
-						<input id="sendbtn" value="发送" type="button" class="btn">
-						<input id="cleanbtn" value="清空" type="button" class="btn">
-					</div>
-				</form>
+			<div id="chat">
+				<div id="chatcontent"></div>
+				<div id="chatform">
+					<form id="sendform">
+						<textarea id="msgtext" name="msgtext" wrap="physical"></textarea>
+						<div id="btnarea">
+							<input id="sendbtn" value="发送(Ctl+↙)" type="button" class="btn formbtn">
+							<input id="cleanbtn" value="清空" type="button" class="btn formbtn">
+						</div>
+					</form>
+				</div>
 			</div>
-		<div>
-	
-		<div id="sidebar">
-			<div id="member"></div>
-			<div id="function">
-				<div id="username">{{ username }}</div>
-			</div>
-		</div>
 
+			<div id="sidebar">
+				<div id="logo">	
+					<div id="pic"></div>
+					<h2><img src="{{ baseurl }}static/img/pattern4.png">茶室</h2>
+					<p>{{ room.roomname }}</p>
+				</div>
+				<div id="member"></div>
+				<div id="user">
+					<div id="username" style="display: none;">{{ user.username }}</div>
+					<div id="avatar"><img src="{{ user.picurl }}"></div>
+					<div id="function">
+						<div id="leave">
+							<form action="{{ baseurl }}shitsu/leave" method="post">
+								<input type="text" name="roomid" value="{{ room.roomid }}" style="display: none;"/>
+								<button type="submit">离开</button>
+							</form>
+							<h4>欢迎。
+								<p>离开请点击~</p>
+							</h4>
+							<p id="attention">*注意如果离开时不点击按钮，可能会出现打开当前链接后自动进入未退出的茶室的情况。</p>
+						</div>
+					</div>
+				</div>
+			</div>
+
+		<div>
 	</div>
 </body>
 </html>

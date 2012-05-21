@@ -22,7 +22,7 @@ class Chat extends U_Model {
 		
 		//$stamp = time(); //时间由前端生成
 		$datetime = date("Y-m-d H:i:s", $data['stamp']['datetime']);
-		$msg = $datetime.'+'.$data['username'].'+'.$data['msg'];
+		$msg = $data['username'].' - '.$datetime.'+'.$data['msg'];
 
 		$redis = new Predis\Client();
 		$redis->zadd('room'.$data['roomid'], $data['stamp']['datetime'].$data['stamp']['mseconds'], $msg);

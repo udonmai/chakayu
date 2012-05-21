@@ -6,7 +6,33 @@ define(function(require) {
 		_sleepTime: 1200,
 		_timeout: undefined,
 		_baseurl: 'shitsu/',
-	
+		
+		_html_encode: function(str) {   
+			var s = "";   
+			if (str.length == 0) return "";   
+			s = str.replace(/&/g, "&gt;");   
+			s = s.replace(/</g, "&lt;");   
+			s = s.replace(/>/g, "&gt;");   
+			s = s.replace(/ /g, "&nbsp;");   
+			s = s.replace(/\'/g, "&#39;");   
+			s = s.replace(/\"/g, "&quot;");   
+			s = s.replace(/\n/g, "<br>");   
+			return s;   
+		},   
+
+		_html_decode: function(str) {   
+			var s = "";   
+			if (str.length == 0) return "";   
+			s = str.replace(/&gt;/g, "&");   
+			s = s.replace(/&lt;/g, "<");   
+			s = s.replace(/&gt;/g, ">");   
+			s = s.replace(/&nbsp;/g, " ");   
+			s = s.replace(/&#39;/g, "\'");   
+			s = s.replace(/&quot;/g, "\"");   
+			s = s.replace(/<br>/g, "\n");   
+			return s;   
+		},  
+
 		_padleft: function(str) {
 			str = str - 0 + '';
 			if (str.length == 3) 
@@ -49,7 +75,14 @@ define(function(require) {
 					} 
 					else {
 						//将后端数据render到页面	
-						$('#chatcontent').append(data['m'][0]);
+						var length = data['m'].length;
+						var msg = new Array();
+						for (var i = 0; i < length; i ++) {
+							msg[i] = data['m'][i].split('+');
+							$('#chatcontent').append('<div class="msg"><p class="msginfo">' + msg[i][0] + '</p><p class="msgcon">' + msg[i][1] + '</p></div>');
+							var y = $('#chatcontent').scrollTop();
+							$('#chatcontent').scrollTop(y + 100);
+						}	
 						Comet._refresh();
 						return;
 					}
@@ -60,11 +93,12 @@ define(function(require) {
 			var username = $('#username').text();
 			var roomid = $('#roomid').text();
 			var stamp = this._getCurrentTimestamp();
+			Comet = this;
 	
 			$.post(this._baseurl + 'chat/', {
 				username: username,
 				roomid: roomid,
-				message: msg,
+				message: Comet._html_encode(msg),
 				stamp: stamp
 			}, function(data) {
 				var sdata = JSON.parse(data);

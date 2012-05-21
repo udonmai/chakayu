@@ -17,8 +17,8 @@
 #logo {
 	height: 40px;
 	width: 280px;
-	padding: 75px 0 5px 80px;
-	background:url(../img/mlogo6.png) no-repeat left bottom;
+	padding: 75px 0 5px 110px;
+	background:url(../img/mlogo6.png) no-repeat 10% bottom;
 	float: left;
 }
 

@@ -26,6 +26,20 @@ define(function(require, exports, module) {
 			var msg = $('#msgtext').val();
 			Comet.send(msg);
 			});
+		
+		$('#msgtext').focus(function() {
+			$(this).keydown(function(e){
+				if (e.ctrlKey && e.which == 13) {
+					$('#sendbtn').click();
+					return false;
+				}
+			});
+		});
+
+		$('#cleanbtn').click(function() {
+			$('#msgtext').attr('value', '');
+			$('#msgtext').focus();
+		});
 
 		//建立长链接
 		Comet.polling();

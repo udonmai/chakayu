@@ -16,9 +16,16 @@ define(function(require) {
 		
 			//创建
 			$('#createbtn').click({baseurl: baseurl}, function(e) {
+
 				var userid = $('#userId').text();	
 				var roomname = $('#createroom').val();
 				var baseurl = e.data.baseurl;
+
+				var roomnum = $('.relative').length;
+				if (roomnum >= 3) {
+					alert('很抱歉，每个用户可以搭建3个茶室');
+					return;
+				}
 
 				$.post(baseurl + 'create', {
 					userId: userid,
@@ -39,6 +46,7 @@ define(function(require) {
 							that.find('.rs-low .rid').text(roomid);
 							that.find('.info').text(roomname);
 							$('.textinput').hide();
+							$('.textinput input').attr('value', '');
 
 						} 
 						else {
@@ -91,6 +99,7 @@ define(function(require) {
 						else {
 							$('#room' + roomid).find('.info').text(newroomname);	
 							$('.modifyinput').hide();
+							$('.modifyinput input').attr('value', '');
 						}
 					});
 
@@ -141,23 +150,33 @@ define(function(require) {
 
 			$('#msectionbtn').click(function() {
 				$('.createinput').fadeIn();
+				$('.createinput input').focus();
 			});
 		
 			$('.rsl-l').click(function() {
 				var roomid = $(this).find('.rid').text();
 				$('.modifyinput p').text(roomid);
-				$('.modifyinput').fadeIn();	
+				$('.modifyinput').fadeIn();
+				$('.modifyinput input').focus();
 			});
 		
 			$('.rsl-r').click(function() {
 				var roomid = $(this).find('.rid').text();
 				$('.destroyinput p').text(roomid);
-				$('.destroyinput').fadeIn();
+				$('.destroyinput').fadeIn();	
 			});
 
 			$('.textinput span').click(function() {
 				$('.textinput').fadeOut();
 			});
+
+			$('.textinput').keydown(function(e){
+		       if (e.keyCode == 13) {
+		            $(this).find('button').click();
+		            return false;
+		        }
+		    });
+
 
 		}
 

@@ -22,8 +22,8 @@ class Square extends CI_Controller {
 		//返回全局创建中不是自己创建的8个以内的元素
 		$data = $this->redis->sdiff('globalbuilt', $userId.'created');
 		$num = count($data);
-		if ($num > 8) 
-			return array_rand($data, 8);
+		if ($num > 12) 
+			return array_rand($data, 12);
 		else 
 			return $data;
 	}

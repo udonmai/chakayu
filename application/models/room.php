@@ -88,8 +88,8 @@ class Room extends U_Model {
 		$redis = new Predis\Client();
 		$redis->srem('room'.$roomid.'mblist', $userId);
 
-		$redis->incr('room'.$roomid.'onlines');
-		$redis->incr('globalonlines');
+		$redis->decr('room'.$roomid.'onlines');
+		$redis->decr('globalonlines');
 	}
 
 }

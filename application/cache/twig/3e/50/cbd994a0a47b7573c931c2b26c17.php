@@ -23,23 +23,28 @@ class __TwigTemplate_3e50cbd994a0a47b7573c931c2b26c17 extends Twig_Template
 \t<meta charset=\"utf-8\">
 \t<title>始めて -「茶粥」</title>
 
-\t<link rel=\"stylesheet\" href=\"";
+\t<link rel=\"shortcut icon\" href=\"";
         // line 8
         if (isset($context["baseurl"])) { $_baseurl_ = $context["baseurl"]; } else { $_baseurl_ = null; }
         echo twig_escape_filter($this->env, $_baseurl_, "html", null, true);
-        echo "static/css/reset.css\">
+        echo "static/img/favicon.ico\">
 \t<link rel=\"stylesheet\" href=\"";
         // line 9
         if (isset($context["baseurl"])) { $_baseurl_ = $context["baseurl"]; } else { $_baseurl_ = null; }
         echo twig_escape_filter($this->env, $_baseurl_, "html", null, true);
-        echo "static/css/bootstrap.min.css\">
+        echo "static/css/reset.css\">
 \t<link rel=\"stylesheet\" href=\"";
         // line 10
         if (isset($context["baseurl"])) { $_baseurl_ = $context["baseurl"]; } else { $_baseurl_ = null; }
         echo twig_escape_filter($this->env, $_baseurl_, "html", null, true);
-        echo "static/css/common.css\">
+        echo "static/css/bootstrap.min.css\">
 \t<link rel=\"stylesheet\" href=\"";
         // line 11
+        if (isset($context["baseurl"])) { $_baseurl_ = $context["baseurl"]; } else { $_baseurl_ = null; }
+        echo twig_escape_filter($this->env, $_baseurl_, "html", null, true);
+        echo "static/css/common.css\">
+\t<link rel=\"stylesheet\" href=\"";
+        // line 12
         if (isset($context["baseurl"])) { $_baseurl_ = $context["baseurl"]; } else { $_baseurl_ = null; }
         echo twig_escape_filter($this->env, $_baseurl_, "html", null, true);
         echo "static/css/login.css\">
@@ -68,7 +73,7 @@ class __TwigTemplate_3e50cbd994a0a47b7573c931c2b26c17 extends Twig_Template
 \t\t\t\t</div>
 \t\t\t\t<div id=\"action\">
 \t\t\t\t\t<p id=\"in\"><a href=\"https://graph.renren.com/oauth/authorize?client_id=";
-        // line 36
+        // line 37
         if (isset($context["post_parems"])) { $_post_parems_ = $context["post_parems"]; } else { $_post_parems_ = null; }
         echo twig_escape_filter($this->env, $this->getAttribute($_post_parems_, "client_appid"), "html", null, true);
         echo "&response_type=code&scope=";
@@ -102,6 +107,6 @@ class __TwigTemplate_3e50cbd994a0a47b7573c931c2b26c17 extends Twig_Template
 
     public function getDebugInfo()
     {
-        return array (  70 => 36,  41 => 11,  36 => 10,  31 => 9,  26 => 8,  17 => 1,);
+        return array (  75 => 37,  46 => 12,  41 => 11,  36 => 10,  31 => 9,  26 => 8,  17 => 1,);
     }
 }

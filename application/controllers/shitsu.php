@@ -33,10 +33,13 @@ class Shitsu extends CI_Controller {
 
 		$user = $this->member->get($userId);
 		$picurl = $user['picurl'];
+		$room = $this->room->get($this->ses['joinroom']);
 
-		$data['username'] = $this->ses['username'];
-		$data['roomid'] = $this->ses['joinroom'];
-		$data['picurl'] = $picurl;
+
+		$data['user']['username'] = $this->ses['username'];
+		$data['room']['roomid'] = $this->ses['joinroom'];
+		$data['room']['roomname'] = $room['roomname'];
+		$data['user']['picurl'] = $picurl;
 		$this->twig->display('shitsu.html', $data);
 	}
 
@@ -97,10 +100,10 @@ class Shitsu extends CI_Controller {
 	public function leave() {
 
 		$roomid = $this->input->post('roomid');
-		$userId = $this->$ses['userId'];
+		$userId = $this->ses['userId'];
 		$this->room->leave($roomid, $userId);
 
-		$sessiondata = array('roomid' => '');
+		$sessiondata = array('joinroom' => '');
 		$this->session->unset_userdata($sessiondata);
 
 		redirect('square');

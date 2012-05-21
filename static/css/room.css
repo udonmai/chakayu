@@ -1,0 +1,179 @@
+#wrap {
+	padding: 50px 0;
+}
+
+#content {
+	min-width: 480px;
+	min-height: 600px;
+	padding: 30px 10px; 
+}
+
+#chat {
+	width: 590px;
+	height: 100%;
+	margin: 0 10px 0 20px;
+	float: left;
+}
+
+#chatcontent {
+	width: 560px;
+	height: 485px;
+	overflow: auto;
+	border-radius: 4px;
+	box-shadow: rgba(0,0,0,0.35) 0px 0px 4px 0px;
+	background: url(../img/tc_bak.jpg);
+}
+
+.msg {
+	margin: 10px;
+	padding: 8px;
+	border-radius: 4px;
+	box-shadow: rgba(0,0,0,0.35) 0px 0px 8px 0px;
+	background-color: white;	
+}
+
+.msg .msginfo {
+	width: 200px;
+	margin: 5px 0 10px 5px;
+	border-bottom: 1px dashed #ADADAD;
+	font-size: 15px;
+	font-weight: bold;
+}
+
+.msg .msgcon {
+	margin: 0 20px;
+	font-size: 14px;
+}
+
+#chatform {
+	width: 550px;
+	height: 90px;
+	margin-top: 20px;
+	padding: 5px;
+	border-radius: 4px;
+	box-shadow: rgba(0,0,0,0.35) 0px 0px 4px 0px;
+	background: url(../img/tc_bak.jpg);
+}
+
+#msgtext {
+	width: 420px;
+	height: 70px;
+	max-width: 420px;
+	margin: 5px 10px 0 5px;
+	float: left;
+	background-color: white;
+}
+
+#btnarea {
+	width: 100px;
+	height: 90px;
+	float: left;
+}
+
+#sendbtn {
+	margin: 5px 0;
+}
+
+.formbtn {
+	width: 100px !important;
+	height: 38px !important;
+}
+
+#sidebar {
+	width: 300px;
+	height: 100%;
+	float: left;
+}
+
+#logo {
+	height: 80px;
+	width: 250px;
+	padding: 20px 0 0 30px;
+	float: left;
+	border-radius: 4px;
+	box-shadow: rgba(0,0,0,0.35) 0px 0px 4px 0px;
+	background: url(../img/tc_bak.jpg);
+}
+
+#logo img {
+	vertical-align: -5px;
+}
+	
+#logo h2 {
+	width: 80px;
+}
+
+#logo p {
+	width: 80px;
+	margin-left: 34px;
+	font-size: 16px; 
+}
+
+#pic {
+	width: 80px;
+	height: 80px;
+	float: right;
+	margin: -10px 15px 0 0;
+	background:url(../img/mlogo6.png) no-repeat 95% center;
+}
+
+#member {
+	height: 320px;
+	width: 250px;
+	margin-top: 20px;
+	padding: 25px 0 0 30px;
+	float: left;
+	border-radius: 4px;
+	box-shadow: rgba(0,0,0,0.35) 0px 0px 4px 0px;
+	background: url(../img/tc_bak.jpg);
+}
+
+#user {
+	height: 105px;
+	width: 265px;
+	margin-top: 20px;
+	padding: 15px 0 0 15px;
+	float: left;
+	border-radius: 4px;
+	box-shadow: rgba(0,0,0,0.35) 0px 0px 4px 0px;
+	background: url(../img/tc_bak.jpg);
+}
+
+#avatar {
+	width: 50px;
+	height: 50px;
+	float: left;
+	margin-right: 15px;
+	border-radius: 4px;
+	box-shadow: rgba(0,0,0,0.35) 0px 0px 4px 0px;
+}
+
+#function {
+}
+
+#leave {
+	margin-top: -20px;
+}
+
+#leave h4 {
+	width: 180px;
+	padding-top: 10px;
+}
+
+#leave p {
+	font-size: 13px;
+	font-weight: normal;
+}
+
+#leave button {
+	width: 60px !important;
+	height: 30px !important;
+	float: right;
+	margin: 15px 25px 0 0;
+} 
+
+#attention {
+	font-size: 6px !important;
+	margin:15px 15px 0 0;
+	border-top: 1px #ADADAD dashed;
+}
