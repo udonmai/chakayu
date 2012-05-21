@@ -92,6 +92,19 @@ class Room extends U_Model {
 		$redis->decr('globalonlines');
 	}
 
+	public function onlinemembers($roomid) {
+		$redis = new Predis\Client();
+		$this->load->model('member');
+		$members = $redis->smembers('room'.$roomid.'mblist');
+		foreach ($members as $member) {
+			$info = $this->member->get($member);
+			$data[$member]['username'] = $info['username'];
+			$data[$member]['picurl'] = $info['picurl'];
+		}
+
+		return $data;
+	}
+
 }
 
 /* End of file room.php */

@@ -35,11 +35,13 @@ class Shitsu extends CI_Controller {
 		$picurl = $user['picurl'];
 		$room = $this->room->get($this->ses['joinroom']);
 
+		$member = $this->room->onlinemembers($this->ses['joinroom']);
 
 		$data['user']['username'] = $this->ses['username'];
 		$data['room']['roomid'] = $this->ses['joinroom'];
 		$data['room']['roomname'] = $room['roomname'];
 		$data['user']['picurl'] = $picurl;
+		$data['onlinemembers'] = $member;
 		$this->twig->display('shitsu.html', $data);
 	}
 

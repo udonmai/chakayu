@@ -96,27 +96,57 @@ class __TwigTemplate_11b7a79a4d070becd4e8ffbbb5e4825e extends Twig_Template
         echo twig_escape_filter($this->env, $this->getAttribute($_room_, "roomname"), "html", null, true);
         echo "</p>
 \t\t\t\t</div>
-\t\t\t\t<div id=\"member\"></div>
+
+\t\t\t\t<div id=\"member\">
+\t\t\t\t\t";
+        // line 44
+        if (isset($context["onlinemembers"])) { $_onlinemembers_ = $context["onlinemembers"]; } else { $_onlinemembers_ = null; }
+        $context['_parent'] = (array) $context;
+        $context['_seq'] = twig_ensure_traversable($_onlinemembers_);
+        foreach ($context['_seq'] as $context["_key"] => $context["item"]) {
+            echo "\t
+\t\t\t\t\t\t<div class=\"member\">
+\t\t\t\t\t\t\t<div class=\"memberpic\"><img src=\"";
+            // line 46
+            if (isset($context["item"])) { $_item_ = $context["item"]; } else { $_item_ = null; }
+            echo twig_escape_filter($this->env, $this->getAttribute($_item_, "picurl"), "html", null, true);
+            echo "\"></div>
+\t\t\t\t\t\t\t<div class=\"membername\">
+\t\t\t\t\t\t\t\t<p>";
+            // line 48
+            if (isset($context["item"])) { $_item_ = $context["item"]; } else { $_item_ = null; }
+            echo twig_escape_filter($this->env, $this->getAttribute($_item_, "username"), "html", null, true);
+            echo "</p>
+\t\t\t\t\t\t\t</div>
+\t\t\t\t\t\t</div>\t
+\t\t\t\t\t";
+        }
+        $_parent = $context['_parent'];
+        unset($context['_seq'], $context['_iterated'], $context['_key'], $context['item'], $context['_parent'], $context['loop']);
+        $context = array_merge($_parent, array_intersect_key($context, $_parent));
+        // line 52
+        echo "\t\t\t\t</div>
+
 \t\t\t\t<div id=\"user\">
 \t\t\t\t\t<div id=\"username\" style=\"display: none;\">";
-        // line 44
+        // line 55
         if (isset($context["user"])) { $_user_ = $context["user"]; } else { $_user_ = null; }
         echo twig_escape_filter($this->env, $this->getAttribute($_user_, "username"), "html", null, true);
         echo "</div>
 \t\t\t\t\t<div id=\"avatar\"><img src=\"";
-        // line 45
+        // line 56
         if (isset($context["user"])) { $_user_ = $context["user"]; } else { $_user_ = null; }
         echo twig_escape_filter($this->env, $this->getAttribute($_user_, "picurl"), "html", null, true);
         echo "\"></div>
 \t\t\t\t\t<div id=\"function\">
 \t\t\t\t\t\t<div id=\"leave\">
 \t\t\t\t\t\t\t<form action=\"";
-        // line 48
+        // line 59
         if (isset($context["baseurl"])) { $_baseurl_ = $context["baseurl"]; } else { $_baseurl_ = null; }
         echo twig_escape_filter($this->env, $_baseurl_, "html", null, true);
         echo "shitsu/leave\" method=\"post\">
 \t\t\t\t\t\t\t\t<input type=\"text\" name=\"roomid\" value=\"";
-        // line 49
+        // line 60
         if (isset($context["room"])) { $_room_ = $context["room"]; } else { $_room_ = null; }
         echo twig_escape_filter($this->env, $this->getAttribute($_room_, "roomid"), "html", null, true);
         echo "\" style=\"display: none;\"/>
@@ -150,6 +180,6 @@ class __TwigTemplate_11b7a79a4d070becd4e8ffbbb5e4825e extends Twig_Template
 
     public function getDebugInfo()
     {
-        return array (  118 => 49,  113 => 48,  106 => 45,  101 => 44,  93 => 40,  88 => 39,  65 => 20,  51 => 13,  46 => 12,  41 => 11,  36 => 10,  31 => 9,  26 => 8,  17 => 1,);
+        return array (  148 => 60,  143 => 59,  136 => 56,  131 => 55,  126 => 52,  115 => 48,  109 => 46,  101 => 44,  93 => 40,  88 => 39,  65 => 20,  51 => 13,  46 => 12,  41 => 11,  36 => 10,  31 => 9,  26 => 8,  17 => 1,);
     }
 }

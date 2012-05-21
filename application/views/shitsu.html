@@ -39,7 +39,18 @@
 					<h2><img src="{{ baseurl }}static/img/pattern4.png">茶室</h2>
 					<p>{{ room.roomname }}</p>
 				</div>
-				<div id="member"></div>
+
+				<div id="member">
+					{% for item in onlinemembers %}	
+						<div class="member">
+							<div class="memberpic"><img src="{{ item.picurl }}"></div>
+							<div class="membername">
+								<p>{{ item.username }}</p>
+							</div>
+						</div>	
+					{% endfor %}
+				</div>
+
 				<div id="user">
 					<div id="username" style="display: none;">{{ user.username }}</div>
 					<div id="avatar"><img src="{{ user.picurl }}"></div>
