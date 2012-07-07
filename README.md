@@ -13,5 +13,5 @@ ORM Framework采用[RedBean](http://www.redbeanphp.com/),账户系统由人人�
 
 ###部分截图
 ![1](http://ww2.sinaimg.cn/large/a74e55b4jw1duojzgqbypj.jpg)
-![2](http://ww4.sinaimg.cn/large/a74e55b4jw1duokcxmb8wj.jpg)
-![3](http://ww2.sinaimg.cn/large/a74eed94jw1duokdc2ee9j.jpg)
+![2](http://ww1.sinaimg.cn/large/a74ecc4cjw1duokzr8zanj.jpg)
+![3](http://ww4.sinaimg.cn/large/a74eed94jw1duokyw69f3j.jpg)
