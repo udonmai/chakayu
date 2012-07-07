@@ -12,7 +12,7 @@ class Square extends CI_Controller {
 		$this->load->model('member');
 		$this->redis = new Predis\Client();
 		$this->ses = $this->session->all_userdata();
-		if (! $this->ses['userId']) {
+		if (! isset($this->ses['userId'])) {
 			redirect('login');
 		}	
 	}
@@ -38,6 +38,22 @@ class Square extends CI_Controller {
 	}
 
 	public function index() {
+		//测试用的
+		//$getget = $this->input->get('i');
+		//if ($getget == 1) {$userId = '313092772'; $username = '陈哲峰';}
+		//else {$userId = '264998736'; $username = '闻亦晨';}
+
+		//session
+		//$sessiondata = array(
+		//	'userId' => $userId,
+		//	'username' => $username,
+		//	//'access_token' => $access_token
+		//);
+		//$this->session->set_userdata($sessiondata);
+
+
+
+
 		$userId = $this->ses['userId'];
 		$selfbuilts = $this->_getselfbuilt($userId);
 		$latestjoins = $this->_getlatestjion($userId);
