@@ -1,6 +1,8 @@
 #茶粥#
 ##ちゃかゆ##
 
+[![Gitter](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/udonmai/chakayu?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
 ###简介
 基于 `CodeIgniter` 开发的一款简洁的聊天室程序，使用 `redis` 处理消息中转（使用[Predis](https://github.com/nrk/predis)来进行redis相关的操作），一定程度弥补了PHP在实时性上的劣势。
 前端使用[SeaJS](http://seajs.org/)作为JS载入器，前端开发过程异常明朗。
